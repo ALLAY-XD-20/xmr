@@ -2,12 +2,12 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/install.sh"
+      "destination": "/install.txt"
     }
   ],
   "headers": [
     {
-      "source": "/install.sh",
+      "source": "/install.txt",
       "headers": [
         {
           "key": "Content-Type",
