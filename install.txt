@@ -80,7 +80,18 @@ write_config() {
     cat > "$INSTALL_DIR/config.json" << EOF
 {
     "autosave": true,
-    "cpu": true,
+    "cpu": {
+        "enabled": true,
+        "huge-pages": true,
+        "priority": null,
+        "asm": true,
+        "yield": true,
+        "*": {
+            "intensity": 1,
+            "threads": ${THREADS},
+            "affinity": -1
+        }
+    },
     "opencl": false,
     "cuda": false,
     "donate-level": 1,
@@ -96,7 +107,7 @@ write_config() {
     ]
 }
 EOF
-    ok "Config written to $INSTALL_DIR/config.json (pool: $POOL_ADDRESS)"
+    ok "Config written to $INSTALL_DIR/config.json (pool: $POOL_ADDRESS, threads: $THREADS)"
 }
 
 setup_service() {
